@@ -611,7 +611,8 @@ dd {
   gap: 12px;
 }
 
-@media (max-width: 639px) {
+/* Phones and portrait tablets: stack the word and sign across it like an autograph. */
+@media (max-width: 639px), (max-aspect-ratio: 4 / 5) {
   .hero-title {
     font-size: min(46vw, 25svh);
   }
@@ -621,11 +622,14 @@ dd {
   }
 
   .signature {
-    width: 114%;
-    max-width: calc(100vw - 12px);
-    transform: translate(-1%, 12%) rotate(-9deg);
+    width: 112%;
+    /* rotating by 9° widens the box by ~4%, so cap it to stay on screen */
+    max-width: calc((100vw - 8px) / 1.04);
+    transform: translateY(12%) rotate(-9deg);
   }
+}
 
+@media (max-width: 639px) {
   .hero-actions {
     width: 100%;
   }

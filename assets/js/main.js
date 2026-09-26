@@ -113,8 +113,7 @@ function initEditor() {
   const screen = el('div', 'screen');
   const bar = el('div', 'monitor-bar', { 'aria-hidden': 'true' });
   const timecode = el('span', 'rec');
-  const counter = el('span', 'counter');
-  bar.append(timecode, counter);
+  bar.append(timecode);
   const medias = clips.map((clip) => {
     const media = clip.querySelector('.clip-media');
     screen.append(media);
@@ -242,9 +241,7 @@ function initEditor() {
       tabs[active].tabIndex = 0;
       medias[active].classList.add('is-active');
       clips[active].classList.add('is-active');
-      const position = `${active + 1} / ${tabs.length}`;
-      count.textContent = position;
-      counter.textContent = position;
+      count.textContent = `${active + 1} / ${tabs.length}`;
       prev.setAttribute('aria-disabled', String(active === 0));
       next.setAttribute('aria-disabled', String(active === tabs.length - 1));
       prev.disabled = false;
