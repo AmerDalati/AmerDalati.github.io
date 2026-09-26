@@ -38,6 +38,6 @@ To preview locally, run `python -m http.server 8000` in this folder and open htt
 
 ## Credits
 
-- Typefaces: [Big Shoulders Display](https://fonts.google.com/specimen/Big+Shoulders+Display) and [Public Sans](https://fonts.google.com/specimen/Public+Sans), SIL Open Font License (licences in `assets/fonts/`).
+- Typefaces (static weights, so every browser renders the same): [Big Shoulders Display](https://fonts.google.com/specimen/Big+Shoulders+Display) and [Public Sans](https://fonts.google.com/specimen/Public+Sans), SIL Open Font License (licences in `assets/fonts/`).
 - Brand icons: [Simple Icons](https://simpleicons.org), CC0.
 - All photos, videos, thumbnails and certificates belong to Amer Dalati.

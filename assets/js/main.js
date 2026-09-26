@@ -260,16 +260,20 @@ function initEditor() {
   };
 
   // Scrubbing: whatever sits under the playhead becomes the active clip.
+  // Reads the scroll position directly, so it never depends on when the browser fires scroll events.
+  const syncFromScroll = () => {
+    timecode.textContent = formatTimecode(scroller.scrollLeft / pps);
+    if (performance.now() < suppressUntil) return;
+    const index = nearest(scroller.scrollLeft + scroller.clientWidth / 2);
+    if (index !== active) select(index, { scroll: false });
+  };
   let ticking = false;
   const onScroll = () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
       ticking = false;
-      timecode.textContent = formatTimecode(scroller.scrollLeft / pps);
-      if (performance.now() < suppressUntil) return;
-      const index = nearest(scroller.scrollLeft + scroller.clientWidth / 2);
-      if (index !== active) select(index, { scroll: false });
+      syncFromScroll();
     });
   };
   scroller.addEventListener('scroll', onScroll, { passive: true });
@@ -313,13 +317,17 @@ function initEditor() {
       scroller.classList.add('is-dragging');
       scroller.setPointerCapture(drag.id);
     }
-    if (dragged) scroller.scrollLeft = drag.left - dx;
+    if (dragged) {
+      scroller.scrollLeft = drag.left - dx;
+      onScroll();
+    }
   });
   const endDrag = () => {
     if (!drag) return;
     drag = null;
     if (!dragged) return;
     scroller.classList.remove('is-dragging');
+    syncFromScroll();
     select(active);
     setTimeout(() => {
       dragged = false;
@@ -434,8 +442,10 @@ function initLightbox() {
   const image = el('img', 'lightbox-img', { alt: '' });
   dialog.insertBefore(image, caption);
 
+  let trigger = null;
   document.querySelectorAll('[data-full]').forEach((button) => {
     button.addEventListener('click', () => {
+      trigger = button;
       const thumb = button.querySelector('img');
       image.src = button.dataset.full;
       image.width = Number(button.dataset.w);
@@ -450,7 +460,10 @@ function initLightbox() {
   dialog.addEventListener('click', (event) => {
     if (event.target === dialog) dialog.close();
   });
-  dialog.addEventListener('close', () => image.removeAttribute('src'));
+  dialog.addEventListener('close', () => {
+    image.removeAttribute('src');
+    trigger?.focus({ preventScroll: true });
+  });
 }
 
 initHeader();
