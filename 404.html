@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Page not found | Amer Dalati</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#002956">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="preload" href="/assets/fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .lost {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 48px var(--gutter);
+      text-align: center;
+      background:
+        radial-gradient(75% 60% at 90% 0%, rgba(44, 211, 255, 0.2), transparent 62%),
+        radial-gradient(60% 55% at 0% 100%, rgba(44, 146, 255, 0.2), transparent 66%),
+        var(--navy);
+    }
+    .lost-code {
+      font-family: var(--font-display);
+      font-size: clamp(7rem, 34vw, 18rem);
+      font-weight: 800;
+      line-height: 0.8;
+      color: var(--paper);
+      -webkit-text-stroke: 0.055em var(--ink);
+      paint-order: stroke fill;
+    }
+    .lost h1 {
+      margin: 28px 0 12px;
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .lost p {
+      max-width: 36ch;
+      margin: 0 auto 32px;
+      color: var(--paper-soft);
+    }
+  </style>
+</head>
+<body>
+  <main class="lost">
+    <div>
+      <p class="lost-code" aria-hidden="true">404</p>
+      <h1>This page isn’t in the edit</h1>
+      <p>The link may be old or mistyped. Everything lives on the main page.</p>
+      <a class="btn btn-primary" href="/">Go to the portfolio</a>
+    </div>
+  </main>
+</body>
+</html>

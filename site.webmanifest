@@ -1,0 +1,12 @@
+{
+  "name": "Amer Dalati | Portfolio",
+  "short_name": "Amer Dalati",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#002956",
+  "theme_color": "#002956",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
